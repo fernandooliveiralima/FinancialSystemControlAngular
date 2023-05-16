@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 import { allTransactions } from '../../data/transactions'
+import { formatDate } from '../../helpers/dateFilter'
 import {MainService} from '../../components/main/main.service'
 
 
@@ -26,12 +27,17 @@ export class TransactionsListComponent {
   faTrash = faTrash
 
   /* Attributes */
-listItems = allTransactions
+listItems = allTransactions;
+getFormatedDate = formatDate(new Date());
 mappedItems = this.listItems.map((transaction) => transaction.amount)
-id!: number
+modelItems = this.listItems.map((model) => model.modelTransactions)
+
+//id!: number
 
   /* Methods */
   callDeleteIdItem(id: number){
     this.mainService.deleteItem(id)
   }
+
+  
 }

@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { combineLatest, of, Observable } from 'rxjs'
 
 
 /* Aplication imports */
@@ -14,6 +15,8 @@ import { transactionType } from '../../types/transactionsType'
 import { categories } from '../../data/categories'
 import { allTransactions } from '../../data/transactions'
 import { MainService } from './main.service'
+import { currentMonth } from '../../helpers/dateFilter'
+import { filterTransactionsByMonth, formatDate } from '../../helpers/dateFilter'
 
 
 /* imports fontawesome */
@@ -38,31 +41,35 @@ export class MainComponent {
   faScaleBalanced = faScaleBalanced;
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
+  faTrash = faTrash
 
   //attributes
   listItems = allTransactions;
-  filteredList: Array<transactionType> = []
+  filteredList: Array<transactionType> = [];
   formulario!: FormGroup;
-
   percentualValue: number = 100
-  faTrash = faTrash
+  getCurrentMonth = currentMonth();
+  getFormatedDate = formatDate(new Date())
+ 
+
+
   //totalItems: any;
 
 
   //Angular Methods
   constructor(private formBuilder: FormBuilder, private mainService: MainService) { }
+
   ngOnInit() {
     this.formulario = this.formBuilder.group({
       formTitle: [''],
       formAmount: [null],
 
     })
-    this.listItems = this.mainService.getListItems() 
+    this.listItems = this.mainService.getListItems()
     
     this.updateValues()
   }
 
-    
   /* methods */
 
   generateRandomId() {
@@ -70,12 +77,17 @@ export class MainComponent {
     return generateId;
   }
 
-
-
   deleteItem(id: number) {
-    this.mainService.deleteItem(id)
-
+    this.mainService.deleteItem(id);
   }
+
+  transactionTypes(){
+    return this.formulario.value.formAmount < 0 ? 'expense' : 'income';
+  }
+
+  /* transactionColor(){
+    
+  } */
 
   updateValues() {
     const transactionsAmounts = this.listItems.map((transaction) => transaction.amount)
@@ -89,8 +101,11 @@ export class MainComponent {
     const expense = transactionsAmounts
       .filter((value) => value < 0)
       .reduce((accumulator, value) => accumulator + value, 0)
-    console.log(`Total ->`,Total, `income ->`,income, `expense ->`,expense);
     
+    
+      this.transactionTypes()
+
+    this.updateDate()
     return { income, expense, Total }
   }
   submitForm() {
@@ -103,14 +118,29 @@ export class MainComponent {
     const transaction = {
       id: this.generateRandomId(),
       date: new Date(2023, 4, 2),
-      category: 'Home',
+      category: 'General',
       title: this.formulario.value.formTitle,
       amount: this.formulario.value.formAmount,
-
+      modelTransactions: this.transactionTypes()
     }
     this.listItems.push(transaction)
-    console.log(this.listItems);
-
+    
+    
   }
 
+  updateDate() {
+
+    const listItems$: Observable< Array<transactionType> > = of(allTransactions);
+    const currentMonth$: Observable<string> = of(currentMonth());
+
+    const combined$ = combineLatest([listItems$, currentMonth$])
+    
+    combined$.subscribe(([listitems, currentmonth]) => {
+      filterTransactionsByMonth(listitems, currentmonth)
+    })
+  }
+
+
 }
+
+

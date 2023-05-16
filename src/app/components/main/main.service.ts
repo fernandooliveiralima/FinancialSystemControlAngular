@@ -1,24 +1,28 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
+
 import { allTransactions } from '../../data/transactions'
+import { currentMonth } from '../../helpers/dateFilter'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
 
-  
-
   constructor() { }
 
-  listItems = allTransactions;
+  
 
-  deleteItem(id: number){
+  listItems = allTransactions;
+  getCurrentMonth = currentMonth()
+  myItems = [this.listItems, this.getCurrentMonth]
+
+  deleteItem(id: number) {
     const index = this.listItems.findIndex(item => item.id === id)
-    if(index !== -1){
+    if (index !== -1) {
       this.listItems.splice(index, 1)
       this.updateValues()
-      
+
     }
   }
 
@@ -34,15 +38,20 @@ export class MainService {
     const expense = transactionsAmounts
       .filter((value) => value < 0)
       .reduce((accumulator, value) => accumulator + value, 0)
-
+    
+    console.log(this.myItems);
+    
     return { income, expense, Total }
   }
 
-  getListItems(){
+  getListItems() {
     return this.listItems;
   }
-  setListItems(items: Array <any>){
+  setListItems(items: Array<any>) {
     this.listItems = items
     this.updateValues()
   }
+
+  
+
 }

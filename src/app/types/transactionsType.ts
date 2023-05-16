@@ -4,6 +4,6 @@ export type transactionType = {
     category: string;
     title: string;
     amount: number;
-    
+    modelTransactions: string;
     
 }

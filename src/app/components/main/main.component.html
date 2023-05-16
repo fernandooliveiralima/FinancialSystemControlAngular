@@ -50,8 +50,22 @@
             <input
                 class="border border-blue-400 input-amount-section p-1 rounded outline-none font-sans placeholder:font-sans"
                 tabindex="2" id="amountInput" type="number" placeholder="0,00" formControlName="formAmount" />
-        </div>
+               <span class="flex flex-col">
 
+                <small class="positive text-green-500">
+                    positive + (income)
+                </small>
+
+                <small class="negative text-red-500">
+                    negative - (expense)
+                </small>
+
+               </span> 
+                <!-- <small>
+                    positive + (income)
+                    negative - (expense)
+                </small> -->
+        </div>
 
 
         <div class="btn-section h-[1.5rem]">

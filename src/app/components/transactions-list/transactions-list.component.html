@@ -1,17 +1,21 @@
 <section class=" flex items-center justify-between flex-col">
 
-    <a routerLink="">Go to Home</a>
+    <div class="calendar w-80 flex items-center justify-evenly">
+        <a routerLink="">Go to Home</a>
+        <div>mes</div>
+    </div>
 
-    
 
-    <div *ngFor="let items of listItems" class="transactions-items w-[80%] flex items-center justify-evenly mt-10 text-white bg-slate-700 shadow-md p-2 rounded">
+
+    <div *ngFor="let items of listItems"
+        class="transactions-items w-[80%] flex items-center justify-evenly mt-10 text-white bg-slate-700 shadow-md p-2 rounded">
         <div class="id">
             id
             <div>{{ items.id }}</div>
         </div>
         <div class="date">
             date
-            <div>{{ items.date }}</div>
+            <div>{{ getFormatedDate }}</div>
         </div>
         <div class="category">
             category
@@ -27,20 +31,17 @@
         </div>
         <div class="transactionModel">
             transactionModel
-            <div>Expense</div>
+            <div>{{ items.modelTransactions }}</div>
         </div>
         <div class="Delete">
             Delete
-            <div >
+            <div>
                 <fa-icon (click)="callDeleteIdItem(items.id)" [icon]="faTrash"></fa-icon>
             </div>
         </div>
         <!--  -->
     </div>
-    
-    
+
+
 
 </section>
-
-
-
