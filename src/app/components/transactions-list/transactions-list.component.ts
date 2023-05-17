@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 import { allTransactions } from '../../data/transactions'
-import { formatDate } from '../../helpers/dateFilter'
+import { formatDate,  currentMonth } from '../../helpers/dateFilter'
 import {MainService} from '../../components/main/main.service'
+
 
 
 @Component({
@@ -22,15 +23,20 @@ export class TransactionsListComponent {
   ngOnInit(){ 
     
     
+    
   }
   /* fontawesome-icons */
   faTrash = faTrash
 
   /* Attributes */
 listItems = allTransactions;
+getCurrentMonth = currentMonth()
 getFormatedDate = formatDate(new Date());
+
 mappedItems = this.listItems.map((transaction) => transaction.amount)
 modelItems = this.listItems.map((model) => model.modelTransactions)
+
+
 
 //id!: number
 
@@ -39,5 +45,6 @@ modelItems = this.listItems.map((model) => model.modelTransactions)
     this.mainService.deleteItem(id)
   }
 
+  
   
 }

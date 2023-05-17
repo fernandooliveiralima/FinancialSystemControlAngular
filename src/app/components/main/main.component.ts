@@ -15,8 +15,8 @@ import { transactionType } from '../../types/transactionsType'
 import { categories } from '../../data/categories'
 import { allTransactions } from '../../data/transactions'
 import { MainService } from './main.service'
-import { currentMonth } from '../../helpers/dateFilter'
-import { filterTransactionsByMonth, formatDate } from '../../helpers/dateFilter'
+import { filterTransactionsByMonth, formatDate, currentMonth } from '../../helpers/dateFilter'
+
 
 
 /* imports fontawesome */
@@ -108,6 +108,7 @@ export class MainComponent {
     this.updateDate()
     return { income, expense, Total }
   }
+  
   submitForm() {
 
     if (this.formulario.value.formTitle === '' || this.formulario.value.formAmount === null) {
@@ -124,7 +125,6 @@ export class MainComponent {
       modelTransactions: this.transactionTypes()
     }
     this.listItems.push(transaction)
-    
     
   }
 

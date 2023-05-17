@@ -29,3 +29,4 @@ export const formatDate = (date: Date): string =>{
 }
 
 const formatedDayMonth = (Number: number): string => Number < 10 ? `0${Number}` : `${Number}`;
+
