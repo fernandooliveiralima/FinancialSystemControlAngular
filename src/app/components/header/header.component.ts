@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /* fontawesome imports */
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faL, faUser } from '@fortawesome/free-solid-svg-icons'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
@@ -12,4 +12,6 @@ import { faBell } from '@fortawesome/free-solid-svg-icons'
 export class HeaderComponent {
   faUser = faUser;
   faBell = faBell;
+
+  
 }
