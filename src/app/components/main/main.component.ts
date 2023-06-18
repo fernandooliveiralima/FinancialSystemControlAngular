@@ -50,7 +50,7 @@ export class MainComponent {
   percentualValue: number = 100
   getCurrentMonth = currentMonth();
   getFormatedDate = formatDate(new Date())
- 
+  spanColor!: string; 
 
 
   //totalItems: any;
@@ -84,11 +84,7 @@ export class MainComponent {
   transactionTypes(){
     return this.formulario.value.formAmount < 0 ? 'expense' : 'income';
   }
-
-  /* transactionColor(){
-    
-  } */
-
+  
   updateValues() {
     const transactionsAmounts = this.listItems.map((transaction) => transaction.amount)
     const Total = transactionsAmounts

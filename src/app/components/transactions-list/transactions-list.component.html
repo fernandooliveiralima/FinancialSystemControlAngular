@@ -1,47 +1,57 @@
 <section class=" flex items-center justify-between flex-col">
 
-    <div class="calendar w-full flex items-center justify-around">
+    <div class="calendar w-full flex items-center justify-around mt-1">
         <a routerLink="">Go to Home</a>
-        
+        <div class="section-month-container w-96 flex items-center justify-between">
+            <button class="bg-slate-500 p-1 text-lg font-semibold rounded" (click)="previousMonth()">Mes
+                Anterior</button>
+            <span class="text-base">{{ currentMonth }} de {{ currentYear }}</span>
+            <button class="bg-slate-500 p-1 text-lg font-semibold rounded" (click)="nextMonth()">Proximo Mes</button>
+        </div>
     </div>
 
 
 
-    <div *ngFor="let items of listItems"
+    <div *ngFor="let items of filteredListTransactions"
         class="transactions-items w-[80%] flex items-center justify-evenly mt-10 text-white bg-slate-700 shadow-md p-2 rounded lg:flex-col lg:items-start lg:h-[30rem] lg:w-36">
         <div class="id">
             id
             <div>{{ items.id }}</div>
         </div>
+
         <div class="date">
             date
             <div>{{ getFormatedDate }}</div>
         </div>
+
         <div class="category">
             category
             <div>{{ items.category }}</div>
         </div>
+
         <div class="title">
             title
             <div>{{ items.title }}</div>
         </div>
+
         <div class="amount">
             amount
             <div>{{ items.amount | currency:'BRL' }}</div>
         </div>
+
         <div class="transactionModel">
             transactionModel
             <div>{{ items.modelTransactions }}</div>
         </div>
+
         <div class="Delete">
             Delete
             <div>
                 <fa-icon (click)="callDeleteIdItem(items.id)" [icon]="faTrash"></fa-icon>
             </div>
+
         </div>
-        <!--  -->
+
     </div>
-
-
 
 </section>
