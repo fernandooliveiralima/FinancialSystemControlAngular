@@ -1,24 +1,24 @@
-<!-- <fa-icon [icon]="faUser"></fa-icon> -->
-<header class="header-section w-full flex items-center justify-between p-3">
-    <h1 class="h1-header text-2xl font-[Roboto] font-medium"> <a routerLink="">Financial System Control</a> </h1>
 
-    <section class="section-user-notifications w-[15rem] flex items-center justify-between lg:flex-col">
+<header class="header-section">
+    <h1 class="h1-header"> <a routerLink="">Financial System Control</a> </h1>
 
-        <section class="notifications-transactions  flex items-center justify-between">
+    <section class="section-user-notifications">
+
+        <section class="notifications-transactions">
             <fa-icon [icon]="faBell"></fa-icon>
-            <span class="transactions-header font-[Roboto] font-medium tracking-wide">
+            <span class="transactions-header">
                 <a routerLink="TransactionsComponent">Transactions</a>
             </span>
         </section>
 
-        <section class="notifications-transactions w-[5.35rem] flex items-center justify-between lg:mr-5 lg:mt-1">
-            <fa-icon class="" [icon]="faUser"></fa-icon>
-            <span class="transactions-header font-[Roboto] font-medium tracking-wide">
+        <section class="notifications-transactions">
+            <fa-icon [icon]="faUser"></fa-icon>
+            <span class="transactions-header">
                 <a routerLink="TransactionsComponent">Fernando</a>
             </span>
         </section>
 
     </section>
 
-    
+
 </header>

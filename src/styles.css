@@ -3,6 +3,174 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    /* header component ----------------------------------------------------- */
+    .header-section{
+        @apply w-full flex items-center justify-between p-3;
+    }
+    .h1-header{
+        @apply text-2xl font-[Roboto] font-medium;
+    }
+    .section-user-notifications{
+        @apply w-[15rem] flex items-center justify-between lg:flex-col;
+    }
+    .notifications-transactions{
+        @apply flex items-center justify-between;
+    }
+    .transactions-header{
+        @apply font-[Roboto] font-medium tracking-wide;
+    }
+    .notifications-transactions{
+        @apply w-[5.35rem] flex items-center justify-between lg:mr-5 lg:mt-1;
+    }
+
+    /* main component ----------------------------------------------------- */
+    .main-section{
+        @apply  font-serif p-3 tracking-wider mt-20;
+    }
+    .h2-main-section{
+        @apply  font-semibold text-lg font-[Roboto];
+    }
+    .transactions-section{
+        @apply bg-gray-600 
+        h-24 w-full 
+        m-auto mt-10 
+        rounded-2xl 
+        flex 
+        items-center 
+        justify-around 
+        lg:flex-col 
+        lg:h-72 
+        lg:w-56 
+        lg:p-1;
+    }
+    .current-balance{
+        @apply  w-48 flex items-center justify-between bg-white rounded-3xl p-3;
+    }
+    .current-balance-elements, .income-elements, .expense-elements{
+        @apply  flex flex-col;
+    }  
+    .span-currentBalance{
+        @apply  font-[Roboto] font-medium text-blue-500;
+    } 
+    .strong-currentBalance{
+        @apply  font-[notoSerifHebrew] text-blue-500 text-xl;
+    }
+    .balanced-icon{
+        @apply  text-blue-500 text-2xl;
+    }
+    
+    /* income elements ----------------------------------------------------- */
+    .span-income{
+        @apply  font-[Roboto] font-medium text-green-500;
+    }
+    .strong-income{
+        @apply  font-[notoSerifHebrew] text-green-500 text-xl;
+    }
+    .icon-income{
+        @apply  text-green-500 text-2xl;
+    }
+
+    /* expense elements ----------------------------------------------------- */
+    .span-expense{
+        @apply  font-[Roboto] font-medium text-red-500;
+    }
+    .strong-expense{
+        @apply  font-[notoSerifHebrew] text-red-500 text-xl;
+    }
+    .icon-expense{
+        @apply  text-red-500 text-2xl;
+    }
+
+    /* form element ----------------------------------------------------- */
+    .transactions-types{
+        @apply  w-[63.75] 
+        bg-white 
+        rounded 
+        mt-20 
+        flex 
+        items-center 
+        justify-around 
+        p-3 
+        lg:p-8 
+        lg:flex-col 
+        lg:items-center 
+        lg:justify-between;
+    }
+    .title-section, .amount-section{
+        @apply  p-2 rounded flex flex-col items-start justify-center;
+    }
+    .label-title-section, .label-amount-section{
+        @apply font-[Roboto];
+    }
+     .input-title-section{
+        @apply border border-blue-400 
+        p-1 rounded 
+        outline-none 
+        font-[Roboto] 
+        placeholder:font-[Roboto];
+     }   
+}   .input-amount-section{
+        @apply  border border-blue-400 
+        p-1 rounded 
+        outline-none 
+        font-sans 
+        placeholder:font-sans;
+    }
+    .small-income-positive{
+        @apply text-green-500;
+    }
+    .small-expense-negative{
+        @apply text-red-500;
+    }
+    .btn-section{
+        @apply  h-[1.5rem] mt-2;
+    }
+    .btn-transaction{
+        @apply  bg-green-500 
+        p-2 rounded 
+        text-white 
+        font-[Roboto] 
+        font-medium tracking-wide;
+    }
+
+    /* Transactions List Component ----------------------------------------------------- */
+    .transactions-list{
+        @apply  flex items-center justify-between flex-col;
+    }
+    .calendar{
+        @apply  w-full flex items-center justify-around mt-1;
+    }
+    .calendar-link{
+        @apply sm:text-xs sm:font-semibold;
+    }
+    .section-month-container{
+        @apply  w-96 flex items-center justify-between;
+    }
+    .previous-month-btn{
+        @apply  bg-slate-500 p-1 text-lg font-semibold rounded sm:text-xs ;
+    }
+    .span-currentDate{
+        @apply text-base sm:text-sm sm:font-semibold;
+    }
+    .next-month-btn{
+        @apply  bg-slate-500 p-1 text-lg font-semibold rounded sm:text-xs ;
+    }
+    .transactions-items{
+        @apply  w-[80%] 
+        flex 
+        items-center 
+        justify-evenly 
+        mt-10 
+        text-white 
+        bg-slate-700 
+        shadow-md p-2 
+        rounded lg:flex-col 
+        lg:items-start 
+        lg:h-[30rem] 
+        lg:w-36;
+    }
+
 body{
     background-color: #ccc;
 }

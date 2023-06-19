@@ -1,13 +1,5 @@
 /* Angular imports */
-import {
-  Component,
-  ElementRef,
-  Renderer2,
-  Output,
-  EventEmitter
-} from '@angular/core';
-import { combineLatest, of, Observable } from 'rxjs'
-
+import { Component } from '@angular/core';
 
 /* Aplication imports */
 import { Category } from '../../types/category'
@@ -16,8 +8,6 @@ import { categories } from '../../data/categories'
 import { allTransactions } from '../../data/transactions'
 import { MainService } from './main.service'
 import { filterTransactionsByMonth, formatDate, currentMonth } from '../../helpers/dateFilter'
-
-
 
 /* imports fontawesome */
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -51,10 +41,6 @@ export class MainComponent {
   getCurrentMonth = currentMonth();
   getFormatedDate = formatDate(new Date())
   spanColor!: string; 
-
-
-  //totalItems: any;
-
 
   //Angular Methods
   constructor(private formBuilder: FormBuilder, private mainService: MainService) { }
@@ -98,45 +84,28 @@ export class MainComponent {
       .filter((value) => value < 0)
       .reduce((accumulator, value) => accumulator + value, 0)
     
-    
       this.transactionTypes()
 
-    this.updateDate()
-    return { income, expense, Total }
-  }
+      return { income, expense, Total }
+    }
+    
+    submitForm() {
   
-  submitForm() {
-
-    if (this.formulario.value.formTitle === '' || this.formulario.value.formAmount === null) {
-      alert('Preencha Todos os Campos!')
-      return
+      if (this.formulario.value.formTitle === '' || this.formulario.value.formAmount === null) {
+        alert('Preencha Todos os Campos!')
+        return
+      }
+  
+      const transaction = {
+        id: this.generateRandomId(),
+        date: new Date(2023, 4, 2),
+        category: 'General',
+        title: this.formulario.value.formTitle,
+        amount: this.formulario.value.formAmount,
+        modelTransactions: this.transactionTypes()
+      }
+      this.listItems.push(transaction)
+      
     }
-
-    const transaction = {
-      id: this.generateRandomId(),
-      date: new Date(2023, 4, 2),
-      category: 'General',
-      title: this.formulario.value.formTitle,
-      amount: this.formulario.value.formAmount,
-      modelTransactions: this.transactionTypes()
-    }
-    this.listItems.push(transaction)
-    
+  
   }
-
-  updateDate() {
-
-    const listItems$: Observable< Array<transactionType> > = of(allTransactions);
-    const currentMonth$: Observable<string> = of(currentMonth());
-
-    const combined$ = combineLatest([listItems$, currentMonth$])
-    
-    combined$.subscribe(([listitems, currentmonth]) => {
-      filterTransactionsByMonth(listitems, currentmonth)
-    })
-  }
-
-
-}
-
-

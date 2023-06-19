@@ -1,76 +1,79 @@
-<main class="main-section font-serif p-3 tracking-wider mt-20">
-    <h2 class="h2-main-section font-semibold text-lg font-[Roboto]">Transactions Dashboard</h2>
+<main class="main-section">
+    <h2 class="h2-main-section">Transactions Dashboard</h2>
 
     <section
-        class="transactions-section bg-gray-600 h-24 w-[63.75rem] m-auto mt-10 rounded-2xl flex items-center justify-around lg:flex-col lg:h-72 lg:w-56 lg:p-1">
+        class="transactions-section">
 
 
 
-        <div class="current-balance w-48 flex items-center justify-between bg-white rounded-3xl p-3">
-            <section class="current-balance-elements flex flex-col">
-                <span class="span-currentBalance font-[Roboto] font-medium text-blue-500">Current Balance</span>
-                <strong class="strong-currentBalance font-[notoSerifHebrew] text-blue-500 text-xl">{{
+        <div class="current-balance">
+            <section class="current-balance-elements">
+                <span class="span-currentBalance">Current Balance</span>
+                <strong class="strong-currentBalance">{{
                     updateValues().Total | currency:'BRL'}}</strong>
             </section>
-            <fa-icon class="text-blue-500 text-2xl" [icon]="faScaleBalanced"></fa-icon>
+            <fa-icon class="balanced-icon" [icon]="faScaleBalanced"></fa-icon>
         </div>
 
-        <div class="current-balance w-48 flex items-center justify-between bg-white rounded-3xl p-3">
-            <section class="income-elements flex flex-col">
-                <span class="span-income font-[Roboto] font-medium text-green-500">Incomes</span>
-                <strong class="strong-income font-[notoSerifHebrew] text-green-500 text-xl">{{ updateValues().income |
+        <div class="current-balance">
+            <section class="income-elements">
+                <span class="span-income">Incomes</span>
+                <strong class="strong-income">{{ updateValues().income |
                     currency:'BRL'}}</strong>
             </section>
-            <fa-icon class="icon-income text-green-500 text-2xl" [icon]="faArrowUp"></fa-icon>
+            <fa-icon class="icon-income" [icon]="faArrowUp"></fa-icon>
         </div>
 
-        <div class="current-balance w-48 flex items-center justify-between bg-white rounded-3xl p-3">
-            <section class="expense-elements flex flex-col">
-                <span class="span-expense font-[Roboto] font-medium text-red-500">Expense</span>
-                <strong class="strong-expense font-[notoSerifHebrew] text-red-500 text-xl">{{ updateValues().expense |
+        <div class="current-balance">
+            <section class="expense-elements">
+                <span class="span-expense">Expenses</span>
+                <strong class="strong-expense">{{ updateValues().expense |
                     currency:'BRL' }}</strong>
             </section>
-            <fa-icon class="icon-expense text-red-500 text-2xl" [icon]="faArrowDown"></fa-icon>
+            <fa-icon class="icon-expense" [icon]="faArrowDown"></fa-icon>
         </div>
 
     </section>
 
     <form [formGroup]="formulario" (ngSubmit)="submitForm()"
-        class="transactions-types w-[63.75] bg-white rounded mt-20 flex items-center justify-around p-3 lg:p-8 lg:flex-col lg:items-center lg:justify-between">
+        class="transactions-types">
 
-        <div class="title-section p-2 rounded flex flex-col items-start justify-center">
-            <label class="label-title-section font-[Roboto]" for="">Title</label>
+        <div class="title-section">
+            <label class="label-title-section" for="">Title</label>
             <input
-                class="border border-blue-400 input-title-section p-1 rounded outline-none font-[Roboto] placeholder:font-[Roboto]"
-                tabindex="1" type="text" placeholder="description" formControlName="formTitle" />
+                class="input-title-section"
+                tabindex="1" 
+                type="text" 
+                placeholder="description"
+                formControlName="formTitle" />
         </div>
 
-        <div class="amount-section p-2 rounded flex flex-col items-start justify-center">
-            <label class="label-amount-section font-[Roboto]" for="amountInput">Amount</label>
+        <div class="amount-section">
+            <label class="label-amount-section" for="amountInput">Amount</label>
             <input
-                class="border border-blue-400 input-amount-section p-1 rounded outline-none font-sans placeholder:font-sans"
-                tabindex="2" id="amountInput" type="number" placeholder="0,00" formControlName="formAmount" />
+                class="input-amount-section"
+                tabindex="2" id="amountInput" 
+                type="number" placeholder="0,00" 
+                formControlName="formAmount" />
+                
             <span class="flex flex-col">
 
-                <small class="positive text-green-500">
+                <small class="small-income-positive">
                     positive + (income)
                 </small>
 
-                <small class="negative text-red-500">
+                <small class="small-expense-negative">
                     negative - (expense)
                 </small>
 
             </span>
-            <!-- <small>
-                    positive + (income)
-                    negative - (expense)
-                </small> -->
+            
         </div>
 
 
-        <div class="btn-section h-[1.5rem] mt-2">
+        <div class="btn-section">
             <button (click)="updateValues()" tabindex="3"
-                class="bg-green-500 p-2 rounded text-white font-[Roboto] font-medium tracking-wide">
+                class="btn-transaction">
                 New Transaction
             </button>
         </div>

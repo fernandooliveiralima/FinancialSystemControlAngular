@@ -1,19 +1,19 @@
-<section class=" flex items-center justify-between flex-col">
+<section class="transactions-list">
 
-    <div class="calendar w-full flex items-center justify-around mt-1">
-        <a routerLink="">Go to Home</a>
-        <div class="section-month-container w-96 flex items-center justify-between">
-            <button class="bg-slate-500 p-1 text-lg font-semibold rounded" (click)="previousMonth()">Mes
+    <div class="calendar">
+        <a class="calendar-link" routerLink="">Go to Home</a>
+        <div class="section-month-container">
+            <button class="previous-month-btn" (click)="previousMonth()">Mes
                 Anterior</button>
-            <span class="text-base">{{ currentMonth }} de {{ currentYear }}</span>
-            <button class="bg-slate-500 p-1 text-lg font-semibold rounded" (click)="nextMonth()">Proximo Mes</button>
+            <span class="span-currentDate">{{ currentMonth }} de {{ currentYear }}</span>
+            <button class="next-month-btn" (click)="nextMonth()">Proximo Mes</button>
         </div>
     </div>
 
 
 
     <div *ngFor="let items of filteredListTransactions"
-        class="transactions-items w-[80%] flex items-center justify-evenly mt-10 text-white bg-slate-700 shadow-md p-2 rounded lg:flex-col lg:items-start lg:h-[30rem] lg:w-36">
+        class="transactions-items">
         <div class="id">
             id
             <div>{{ items.id }}</div>
