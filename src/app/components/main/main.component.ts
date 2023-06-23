@@ -2,22 +2,21 @@
 import { Component } from '@angular/core';
 
 /* Aplication imports */
-import { Category } from '../../types/category'
-import { transactionType } from '../../types/transactionsType'
-import { categories } from '../../data/categories'
-import { allTransactions } from '../../data/transactions'
-import { MainService } from './main.service'
-import { filterTransactionsByMonth, formatDate, currentMonth } from '../../helpers/dateFilter'
+import { transactionType } from '../../types/transactionsType';
+import { allTransactions } from '../../data/transactions';
+import { MainService } from './main.service';
+import { formatDate } from '../../helpers/dateFilter';
 
 /* imports fontawesome */
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faScaleBalanced } from '@fortawesome/free-solid-svg-icons'
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 //import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -37,18 +36,15 @@ export class MainComponent {
   listItems = allTransactions;
   filteredList: Array<transactionType> = [];
   formulario!: FormGroup;
-  percentualValue: number = 100
-  getCurrentMonth = currentMonth();
   getFormatedDate = formatDate(new Date())
-  spanColor!: string; 
-
+  
   //Angular Methods
   constructor(private formBuilder: FormBuilder, private mainService: MainService) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      formTitle: [''],
-      formAmount: [null],
+      formTitle: ['', [Validators.required, Validators.minLength(3)]],
+      formAmount: [null, [Validators.required, Validators.minLength(1)]],
 
     })
     this.listItems = this.mainService.getListItems()
@@ -85,7 +81,7 @@ export class MainComponent {
       .reduce((accumulator, value) => accumulator + value, 0)
     
       this.transactionTypes()
-
+      
       return { income, expense, Total }
     }
     
@@ -105,7 +101,7 @@ export class MainComponent {
         modelTransactions: this.transactionTypes()
       }
       this.listItems.push(transaction)
-      
+      this.formulario.reset();
     }
   
   }

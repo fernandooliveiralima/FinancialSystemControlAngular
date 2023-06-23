@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
 /* fontawesome imports */
-import { faL, faUser } from '@fortawesome/free-solid-svg-icons'
-import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-header',

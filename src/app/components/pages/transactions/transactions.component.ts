@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { allTransactions } from '../../../data/transactions'
 
-
 /* imports fontAwesome */
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,8 +19,4 @@ export class TransactionsComponent {
   /* Attributes */
   listItems = allTransactions
   
-
-  /* Methods */
-  
-    
 }

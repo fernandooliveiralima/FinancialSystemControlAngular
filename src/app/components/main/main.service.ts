@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 
 
 import { allTransactions } from '../../data/transactions'
-import { currentMonth } from '../../helpers/dateFilter'
+/* import { currentMonth } from '../../helpers/dateFilter' */
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class MainService {
   
 
   listItems = allTransactions;
-  getCurrentMonth = currentMonth()
-  myItems = [this.listItems, this.getCurrentMonth]
+  
+  myItems = [this.listItems]
 
   deleteItem(id: number) {
     const index = this.listItems.findIndex(item => item.id === id)
