@@ -81,6 +81,7 @@
     .icon-expense{
         @apply  text-red-500 text-2xl;
     }
+    
 
     /* form element ----------------------------------------------------- */
     .transactions-types{
@@ -151,7 +152,7 @@
         @apply  bg-slate-500 p-1 text-lg font-semibold rounded sm:text-xs ;
     }
     .span-currentDate{
-        @apply text-base sm:text-sm sm:font-semibold;
+        @apply text-base sm:text-xs sm:font-semibold;
     }
     .next-month-btn{
         @apply  bg-slate-500 p-1 text-lg font-semibold rounded sm:text-xs ;

@@ -4,18 +4,22 @@ import { Component } from '@angular/core';
 /* Aplication imports */
 import { transactionType } from '../../types/transactionsType';
 import { allTransactions } from '../../data/transactions';
-import { MainService } from './main.service';
+
 import { formatDate } from '../../helpers/dateFilter';
 
 /* imports fontawesome */
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faArrowRight,
+  faScaleBalanced,
+  faArrowUp,
+  faArrowDown,
+  faTrash,
+  faCircleCheck
+} from '@fortawesome/free-solid-svg-icons';
 
-//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -30,7 +34,8 @@ export class MainComponent {
   faScaleBalanced = faScaleBalanced;
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
-  faTrash = faTrash
+  faTrash = faTrash;
+  faCircleCheck = faCircleCheck;
 
   //attributes
   listItems = allTransactions;
@@ -38,8 +43,11 @@ export class MainComponent {
   formulario!: FormGroup;
   getFormatedDate = formatDate(new Date())
   
+  modalContainer = 'modal-container';
+  
+
   //Angular Methods
-  constructor(private formBuilder: FormBuilder, private mainService: MainService) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
@@ -47,10 +55,11 @@ export class MainComponent {
       formAmount: [null, [Validators.required, Validators.minLength(1)]],
 
     })
-    this.listItems = this.mainService.getListItems()
-    
+
     this.updateValues()
+    
   }
+
 
   /* methods */
 
@@ -59,14 +68,12 @@ export class MainComponent {
     return generateId;
   }
 
-  deleteItem(id: number) {
-    this.mainService.deleteItem(id);
-  }
 
-  transactionTypes(){
+
+  transactionTypes() {
     return this.formulario.value.formAmount < 0 ? 'expense' : 'income';
   }
-  
+
   updateValues() {
     const transactionsAmounts = this.listItems.map((transaction) => transaction.amount)
     const Total = transactionsAmounts
@@ -79,29 +86,34 @@ export class MainComponent {
     const expense = transactionsAmounts
       .filter((value) => value < 0)
       .reduce((accumulator, value) => accumulator + value, 0)
+
+    this.transactionTypes()
     
-      this.transactionTypes()
-      
-      return { income, expense, Total }
-    }
-    
-    submitForm() {
-  
-      if (this.formulario.value.formTitle === '' || this.formulario.value.formAmount === null) {
-        alert('Preencha Todos os Campos!')
-        return
-      }
-  
-      const transaction = {
-        id: this.generateRandomId(),
-        date: new Date(2023, 4, 2),
-        category: 'General',
-        title: this.formulario.value.formTitle,
-        amount: this.formulario.value.formAmount,
-        modelTransactions: this.transactionTypes()
-      }
-      this.listItems.push(transaction)
-      this.formulario.reset();
-    }
-  
+    return { income, expense, Total }
   }
+
+  submitForm() {
+
+    if (this.formulario.value.formTitle === '' || this.formulario.value.formAmount === null) {
+      alert('Preencha Todos os Campos!')
+      return
+    }
+
+    const transaction = {
+      id: this.generateRandomId(),
+      date: new Date(2023, 4, 2),
+      category: 'General',
+      title: this.formulario.value.formTitle,
+      amount: this.formulario.value.formAmount,
+      modelTransactions: this.transactionTypes()
+    }
+    this.listItems.push(transaction)
+    this.formulario.reset();
+
+    
+    
+  }
+
+  
+
+}

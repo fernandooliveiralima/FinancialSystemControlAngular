@@ -1,8 +1,7 @@
 <main class="main-section">
     <h2 class="h2-main-section">Transactions Dashboard</h2>
 
-    <section
-        class="transactions-section">
+    <section class="transactions-section">
 
 
 
@@ -35,27 +34,19 @@
 
     </section>
 
-    <form [formGroup]="formulario" (ngSubmit)="submitForm()"
-        class="transactions-types">
+    <form [formGroup]="formulario" (ngSubmit)="submitForm()" class="transactions-types">
 
         <div class="title-section">
             <label class="label-title-section" for="">Title</label>
-            <input
-                class="input-title-section"
-                tabindex="1" 
-                type="text" 
-                placeholder="description"
+            <input class="input-title-section" tabindex="1" type="text" placeholder="description"
                 formControlName="formTitle" />
         </div>
 
         <div class="amount-section">
             <label class="label-amount-section" for="amountInput">Amount</label>
-            <input
-                class="input-amount-section"
-                tabindex="2" id="amountInput" 
-                type="number" placeholder="0,00" 
+            <input class="input-amount-section" tabindex="2" id="amountInput" type="number" placeholder="0,00"
                 formControlName="formAmount" />
-                
+
             <span class="flex flex-col">
 
                 <small class="small-income-positive">
@@ -67,17 +58,16 @@
                 </small>
 
             </span>
-            
+
         </div>
 
 
         <div class="btn-section">
-            <button (click)="updateValues()" tabindex="3"
-                class="btn-transaction">
+            <button (click)="updateValues()" tabindex="3" class="btn-transaction">
                 New Transaction
             </button>
         </div>
     </form>
 
-
+    
 </main>

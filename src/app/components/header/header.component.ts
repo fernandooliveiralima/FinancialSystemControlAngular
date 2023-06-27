@@ -11,4 +11,6 @@ import { faBell, faUser } from '@fortawesome/free-solid-svg-icons'
 export class HeaderComponent {
   faUser = faUser;
   faBell = faBell;
+
 }
+  

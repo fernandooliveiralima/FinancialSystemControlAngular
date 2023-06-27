@@ -7,7 +7,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 /* App Imports */
 import { allTransactions } from '../../data/transactions'
 import { formatDate } from '../../helpers/dateFilter'
-import { MainService } from '../../components/main/main.service'
+
 import { transactionType } from '../../types/transactionsType';
 
 @Component({
@@ -18,7 +18,7 @@ import { transactionType } from '../../types/transactionsType';
 export class TransactionsListComponent {
 
   /* Angular Methods */
-  constructor(private mainService: MainService) { }
+  constructor() { }
 
   ngOnInit() { }
 
@@ -38,9 +38,7 @@ export class TransactionsListComponent {
   months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
   /* Methods */
-  callDeleteIdItem(id: number) {
-    this.mainService.deleteItem(id)
-  }
+  
 
   get currentMonth() {
     return this.months[this.currentMonthIndex];
@@ -66,6 +64,14 @@ export class TransactionsListComponent {
 
   updateFilteredList() {
     this.filteredList = this.filteredList;
+  }
+
+  deleteItem(ID: number){
+    const index = this.listItems.findIndex(item => item.id === ID)
+    if(index !== -1){
+      this.listItems.splice(index, 1); 
+      console.log(index);
+     }
   }
 
 }
