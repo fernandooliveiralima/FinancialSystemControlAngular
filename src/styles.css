@@ -32,34 +32,34 @@
         @apply  font-semibold text-lg font-[Roboto];
     }
     .transactions-section{
-        @apply bg-gray-600 
-        h-24 w-full 
-        m-auto mt-10 
-        rounded-2xl 
-        flex 
-        items-center 
-        justify-around 
-        lg:flex-col 
-        lg:h-72 
-        lg:w-56 
+        @apply bg-gray-600
+        h-24 w-full
+        m-auto mt-10
+        rounded-2xl
+        flex
+        items-center
+        justify-around
+        lg:flex-col
+        lg:h-72
+        lg:w-56
         lg:p-1;
     }
     .current-balance{
-        @apply  w-48 flex items-center justify-between bg-white rounded-3xl p-3;
+        @apply  w-80 flex items-center justify-between bg-white rounded-3xl p-3;
     }
     .current-balance-elements, .income-elements, .expense-elements{
         @apply  flex flex-col;
-    }  
+    }
     .span-currentBalance{
         @apply  font-[Roboto] font-medium text-blue-500;
-    } 
+    }
     .strong-currentBalance{
         @apply  font-[notoSerifHebrew] text-blue-500 text-xl;
     }
     .balanced-icon{
         @apply  text-blue-500 text-2xl;
     }
-    
+
     /* income elements ----------------------------------------------------- */
     .span-income{
         @apply  font-[Roboto] font-medium text-green-500;
@@ -81,21 +81,21 @@
     .icon-expense{
         @apply  text-red-500 text-2xl;
     }
-    
+
 
     /* form element ----------------------------------------------------- */
     .transactions-types{
-        @apply  w-[63.75] 
-        bg-white 
-        rounded 
-        mt-20 
-        flex 
-        items-center 
-        justify-around 
-        p-3 
-        lg:p-8 
-        lg:flex-col 
-        lg:items-center 
+        @apply  w-[63.75]
+        bg-white
+        rounded
+        mt-20
+        flex
+        items-center
+        justify-around
+        p-3
+        lg:p-8
+        lg:flex-col
+        lg:items-center
         lg:justify-between;
     }
     .title-section, .amount-section{
@@ -105,17 +105,17 @@
         @apply font-[Roboto];
     }
      .input-title-section{
-        @apply border border-blue-400 
-        p-1 rounded 
-        outline-none 
-        font-[Roboto] 
+        @apply border border-blue-400
+        p-1 rounded
+        outline-none
+        font-[Roboto]
         placeholder:font-[Roboto];
-     }   
+     }
 }   .input-amount-section{
-        @apply  border border-blue-400 
-        p-1 rounded 
-        outline-none 
-        font-sans 
+        @apply  border border-blue-400
+        p-1 rounded
+        outline-none
+        font-sans
         placeholder:font-sans;
     }
     .small-income-positive{
@@ -128,10 +128,10 @@
         @apply  h-[1.5rem] mt-2;
     }
     .btn-transaction{
-        @apply  bg-green-500 
-        p-2 rounded 
-        text-white 
-        font-[Roboto] 
+        @apply  bg-green-500
+        p-2 rounded
+        text-white
+        font-[Roboto]
         font-medium tracking-wide;
     }
 
@@ -158,21 +158,24 @@
         @apply  bg-slate-500 p-1 text-lg font-semibold rounded sm:text-xs ;
     }
     .transactions-items{
-        @apply  w-[80%] 
-        flex 
-        items-center 
-        justify-evenly 
-        mt-10 
-        text-white 
-        bg-slate-700 
-        shadow-md p-2 
-        rounded lg:flex-col 
-        lg:items-start 
-        lg:h-[30rem] 
+        @apply  w-[80%]
+        flex
+        items-center
+        justify-evenly
+        mt-10
+        text-white
+        bg-slate-700
+        shadow-md p-2
+        rounded lg:flex-col
+        lg:items-start
+        lg:h-[30rem]
         lg:w-36;
     }
 
 body{
     background-color: #ccc;
 }
+
+/* bell animation ---------------------------------------------------------------------------------------------------- */
+
 

@@ -30,15 +30,11 @@ export class TransactionsListComponent {
   filteredList: Array<transactionType> = [];
   getFormatedDate = formatDate(new Date());
 
-  mappedItems = this.listItems.map((transaction) => transaction.amount)
-  modelItems = this.listItems.map((model) => model.modelTransactions)
-
   currentMonthIndex = new Date().getMonth();
   currentYear = new Date().getFullYear();
   months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
   /* Methods */
-  
 
   get currentMonth() {
     return this.months[this.currentMonthIndex];
@@ -47,7 +43,8 @@ export class TransactionsListComponent {
   get filteredListTransactions() {
     const targetMonth = this.currentMonthIndex;
     return this.listItems.filter((obj) => {
-      const objMonth = new Date(obj.date).getMonth() + 1;
+      const objMonth = new Date(obj.date).getMonth();
+
       return objMonth === targetMonth;
     });
   }
@@ -69,10 +66,10 @@ export class TransactionsListComponent {
   deleteItem(ID: number){
     const index = this.listItems.findIndex(item => item.id === ID)
     if(index !== -1){
-      this.listItems.splice(index, 1); 
-      console.log(index);
+      this.listItems.splice(index, 1);
+      
      }
   }
 
+
 }
-  

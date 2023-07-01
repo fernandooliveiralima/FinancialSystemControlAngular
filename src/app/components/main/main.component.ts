@@ -42,9 +42,9 @@ export class MainComponent {
   filteredList: Array<transactionType> = [];
   formulario!: FormGroup;
   getFormatedDate = formatDate(new Date())
-  
+  showModal = '';
   modalContainer = 'modal-container';
-  
+
 
   //Angular Methods
   constructor(private formBuilder: FormBuilder) { }
@@ -57,7 +57,7 @@ export class MainComponent {
     })
 
     this.updateValues()
-    
+
   }
 
 
@@ -88,7 +88,7 @@ export class MainComponent {
       .reduce((accumulator, value) => accumulator + value, 0)
 
     this.transactionTypes()
-    
+
     return { income, expense, Total }
   }
 
@@ -101,7 +101,7 @@ export class MainComponent {
 
     const transaction = {
       id: this.generateRandomId(),
-      date: new Date(2023, 4, 2),
+      date: new Date(),
       category: 'General',
       title: this.formulario.value.formTitle,
       amount: this.formulario.value.formAmount,
@@ -111,9 +111,9 @@ export class MainComponent {
     this.formulario.reset();
 
     
-    
+
   }
 
-  
+
 
 }
