@@ -69,5 +69,10 @@
         </div>
     </form>
 
-    
+    <div [ngClass]="{'hidden-modal': !showModal}" class="modal-element">
+      <fa-icon class="success-transaction-icon" [icon]="faCircleCheck"></fa-icon>
+      <span class="span-transaction">Transação Adicionada!</span>
+      <small class="small-transactions">Vá para <span class="span-smallText">Transactions</span> para ver suas transações</small>
+      <button (click)="toggleModal()" class="btn-closeModal">Close Modal</button>
+    </div>
 </main>

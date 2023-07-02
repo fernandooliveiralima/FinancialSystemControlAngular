@@ -42,7 +42,7 @@ export class MainComponent {
   filteredList: Array<transactionType> = [];
   formulario!: FormGroup;
   getFormatedDate = formatDate(new Date())
-  showModal = '';
+  showModal = false;
   modalContainer = 'modal-container';
 
 
@@ -110,10 +110,12 @@ export class MainComponent {
     this.listItems.push(transaction)
     this.formulario.reset();
 
-    
 
+    this.toggleModal();
   }
 
-
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
 
 }

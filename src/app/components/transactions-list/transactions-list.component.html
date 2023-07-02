@@ -14,40 +14,40 @@
 
     <div *ngFor="let items of filteredListTransactions"
         class="transactions-items">
-        <div class="id">
+        <div class="id-container">
             id
-            <div>{{ items.id }}</div>
+            <div class="id">{{ items.id }}</div>
         </div>
 
-        <div class="date">
+        <div class="date-container">
             date
-            <div>{{ getFormatedDate }}</div>
+            <div class="date">{{ getFormatedDate }}</div>
         </div>
 
-        <div class="category">
+        <div class="category-container">
             category
-            <div>{{ items.category }}</div>
+            <div class="category">{{ items.category }}</div>
         </div>
 
-        <div class="title">
+        <div class="title-container">
             title
-            <div>{{ items.title }}</div>
+            <div class="title">{{ items.title }}</div>
         </div>
 
-        <div class="amount">
+        <div class="amount-container">
             amount
-            <div>{{ items.amount | currency:'BRL' }}</div>
+            <div class="amount">{{ items.amount | currency:'BRL' }}</div>
         </div>
 
-        <div class="transactionModel">
-            transactionModel
-            <div>{{ items.modelTransactions }}</div>
+        <div class="transactionModel-container">
+            transaction-Model
+            <div class="transaction-model">{{ items.modelTransactions }}</div>
         </div>
 
-        <div class="Delete">
+        <div class="delete-container">
             Delete
             <div>
-                <fa-icon (click)="deleteItem(items.id)" [icon]="faTrash"></fa-icon>
+                <fa-icon class="delete" (click)="deleteItem(items.id)" [icon]="faTrash"></fa-icon>
             </div>
 
         </div>
