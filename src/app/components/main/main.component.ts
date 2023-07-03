@@ -45,7 +45,7 @@ export class MainComponent {
   showModal = false;
   modalContainer = 'modal-container';
 
-
+  headerClass!: string;
   //Angular Methods
   constructor(private formBuilder: FormBuilder) { }
 
@@ -110,8 +110,9 @@ export class MainComponent {
     this.listItems.push(transaction)
     this.formulario.reset();
 
-
     this.toggleModal();
+
+    this.headerClass = 'bell-animation';
   }
 
   toggleModal(){

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 /* fontawesome imports */
 import { faBell, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,9 @@ export class HeaderComponent {
   bellClass: string = '';
   listSubject = new BehaviorSubject(this.listItems);
 
+  @Input() headerClass!: string;
+
   /* methods */
 
-  
+
 }

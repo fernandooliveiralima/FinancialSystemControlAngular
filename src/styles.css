@@ -6,7 +6,14 @@
 @layer components {
     /* header component ----------------------------------------------------- */
     .header-section{
-        @apply w-full flex items-center justify-between p-3;
+        @apply w-full
+        flex
+        items-center
+        justify-between
+        p-3
+        relative
+        right-3
+        bottom-20;
     }
     .h1-header{
         @apply text-2xl font-[Roboto] font-medium
@@ -27,7 +34,10 @@
 
     /* main component ----------------------------------------------------- */
     .main-section{
-        @apply  font-serif p-3 tracking-wider mt-20;
+        @apply  font-serif
+        p-3
+        tracking-wider
+        mt-20;
     }
     .h2-main-section{
         @apply  font-semibold text-lg font-[Roboto];
