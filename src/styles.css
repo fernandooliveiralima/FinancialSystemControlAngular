@@ -164,6 +164,7 @@
       flex-col
       items-center
       justify-center
+      shadow-lg
       md:max-h-96
       sm:w-[90%]
       sm:left-[5%]

@@ -32,7 +32,7 @@ export class TransactionsListComponent {
 
   currentMonthIndex = new Date().getMonth();
   currentYear = new Date().getFullYear();
-  months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  months = ['January', 'February', 'March', 'April', 'May', 'Juny', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   /* Methods */
 
@@ -67,7 +67,7 @@ export class TransactionsListComponent {
     const index = this.listItems.findIndex(item => item.id === ID)
     if(index !== -1){
       this.listItems.splice(index, 1);
-      
+
      }
   }
 
